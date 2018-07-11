@@ -1,6 +1,20 @@
 ﻿<!DOCTYPE html>
 <script>
+function update() {
+	document.getElementById('text').value = potatocount;
+	document.title = potatocount + " Potatos";
+	document.getElementById('amountShovel').innerHTML = "You Own " + shovel + " Shovels";
+	document.getElementById('costShovel').innerHTML = ((shovel+1) * 12) + " Potatos";
+}
+
 var potatocount = 0;
+var shovel = 0;
+
+function timer() {
+	potatocount = potatocount + shovel;
+	update()
+}
+setInterval(timer, 1000)
 </script>
 </html>
 	<head>
@@ -19,9 +33,38 @@ var potatocount = 0;
 		<script>
 		function add() {
 			potatocount = potatocount + 1
-			document.getElementById('text').value = potatocount;
+			update()
 		}
+		</script>
+		Potatos.
+		<br><br>
 		
+		<button><a href="#" onClick="save()">Save</a></button>
+		<button><a href="#" onClick="load()">Load</a></button>
+		<br><br>
+		
+		<p>Buy 1 Shovel</p>
+		<p>Description: Automatically digs you 1 potato every second</p>
+		<button><a href="#" onClick="buyShovel()"><img src="images/shovel.png" width="32px" height="32px"></a></button>
+		<p id="costShovel">Potatos</p>
+		<p id="amountShovel">You Own 0 Shovels</p>
+		
+		<script>
+		function save() {
+			localStorage.setItem("potatocount", potatocount)
+		}
+		function load() {
+			potatocount = localStorage.getItem("potatocount");
+			potatocount = parseInt(potatocount);
+			update()
+		}
+		function buyShovel() {
+			if (potatocount >= ((shovel+1) * 12)) {
+				potatocount = potatocount - ((shovel+1) * 12);
+				shovel = shovel + 1;
+				update()
+			}
+		}
 		</script>
 	</body>
 	<html>
