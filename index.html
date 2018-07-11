@@ -1,18 +1,27 @@
 ﻿<!DOCTYPE html>
+<script>
+var potatocount = 0;
+</script>
 </html>
 	<head>
-	<title>I Made a website!</title>
-	
-	<style>
-	body {
-	background-image: <img src="images/uncoplixweblogo.png">
-	}
-	
-	</style>
+	<title>Potato Clicker!</title>
 	
 	</head>
 	
 	<body>
-	<p>Hi! :D:D::D:D:D:D:D</p>
+	
+		<p>Welcome to Potato Clicker!</p>
+		<br><br>
+		<a href=# onclick="add()"><img src="images/potato.jpg"></a>
+		<br><br>
+		You got:
+		<input type="text" id="text" disabled style= text-align:center>
+		<script>
+		function add() {
+			potatocount = potatocount + 1
+			document.getElementById('text').value = potatocount;
+		}
+		
+		</script>
 	</body>
 	<html>
